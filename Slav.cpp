@@ -18,7 +18,9 @@ void Slav::init()
 
 Slav::Slav()
 {
-	static int amountOfNames = (init(), names.size());
+	static int amountOfNames = (init(), names.size()); // leniwa inicjalizacja 
+	// zmiennej amountOfNames zostanie przypisane liczba wszystkich imion wczytanych z pliku. 
+	// liczba imion zawiera się w names.size() po uprzednim wywolaniu funkcji init()
 	_name = names[rand() % amountOfNames];
 	_id = _counter++;
 }
@@ -26,4 +28,8 @@ Slav::Slav()
 string Slav::description()
 {
 	return string("  ") + _name + " [" + to_string(_id) + "]";
+}
+gender Slav::which_gender()
+{
+	return (_name[_name.length()-1]=='a') ? woman : man;
 }
